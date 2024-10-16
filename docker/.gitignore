@@ -1,0 +1,9 @@
+/nginx/log
+/db/*
+!/db/init/
+/storage
+.env
+/redis/data/*
+*.conf
+*.ini
+compose.yml
