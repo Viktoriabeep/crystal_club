@@ -19,9 +19,16 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
+# Копіюємо composer.json і composer.lock для оптимізації кешу
+COPY composer.json composer.lock ./
+# Встановлюємо залежності без автозавантаження та скриптів
+RUN composer install --no-autoloader --no-scripts
+
+# Тепер копіюємо весь код
 COPY . .
 
-RUN composer install
+# Оптимізуємо автозавантаження
+RUN composer dump-autoload --optimize
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
