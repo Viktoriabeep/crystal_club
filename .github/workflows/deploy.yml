@@ -26,6 +26,16 @@ jobs:
     - name: Run migrations
       run: php artisan migrate --force  # Виконуємо міграції бази даних
 
+    - name: Debug
+      run: |
+      echo "Server Host: ${{ secrets.SERVER_HOST }}"
+      echo "Server User: ${{ secrets.SERVER_USER }}"
+
+    - name: Check Docker containers
+      run: docker ps -a
+
+
+
     - name: Deploy to Server via SSH
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # Використовуємо секрети для SSH

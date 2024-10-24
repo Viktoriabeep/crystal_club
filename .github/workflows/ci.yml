@@ -61,3 +61,7 @@ jobs:
     - name: Run tests
       run: php artisan test --env=testing
 
+    - name: Check Installed PHP Version
+      run: php -v
+
+
