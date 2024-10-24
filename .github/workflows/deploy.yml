@@ -1,0 +1,39 @@
+name: Deploy Laravel Application
+
+on:
+  push:
+    branches:
+      - main  # Виконувати при пуші в гілку main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2  # Клонуємо репозиторій
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'  # Вказуємо версію PHP
+
+    - name: Install dependencies
+      run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader  # Встановлюємо залежності
+
+    - name: Copy .env file
+      run: cp .env.production .env  # Копіюємо файл конфігурації
+
+    - name: Run migrations
+      run: php artisan migrate --force  # Виконуємо міграції бази даних
+
+    - name: Deploy to Server via SSH
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # Використовуємо секрети для SSH
+        SERVER_HOST: ${{ secrets.SERVER_HOST }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+      run: |
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} << 'EOF'
+          cd /path_to_project
+          git pull origin main
+          docker-compose up -d --build
+        EOF
