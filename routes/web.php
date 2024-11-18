@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Inertia\Inertia;
+
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
@@ -24,5 +26,17 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/users', [UserController::class, 'index']);
 
+Route::get('/', function () {
+    return Inertia::render('Home', [
+        'name' => 'Inertia + React',
+    ]);
+});
+
+
 
 require __DIR__.'/auth.php';
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
