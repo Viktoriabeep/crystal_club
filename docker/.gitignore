@@ -6,4 +6,4 @@
 /redis/data/*
 *.conf
 *.ini
-compose.yml
+
