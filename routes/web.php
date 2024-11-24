@@ -3,20 +3,36 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
+Route::get('/', function () {
+    return Inertia::render('Home');
+});
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
+Route::middleware(['auth', 'verified_with_locale'])->group(function () {
+    Route::get('/{route}', function ($route) {
+        $redirect_routes = ['dashboard'];
 
-Route::get('/', function () {
-    return view('welcome');
+        if (in_array($route, $redirect_routes)) {
+            $locale = Session::get('locale', config('app.fallback_locale'));
+            return redirect("/$locale/$route");
+        }
+
+        abort(404);
+    })->where('route', 'dashboard');
+
+    Route::group(['prefix' => '{locale?}', 'where' => ['locale' => 'en|uk']], function () {
+        Route::get('/dashboard', function () {
+            return Inertia::render('user/Dashboard', [
+                'user' => auth()->user(),
+            ]);
+        })->name('dashboard');
+    });
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -26,17 +42,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/users', [UserController::class, 'index']);
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'name' => 'Inertia + React',
+Route::get('/orders', function () {
+    return Inertia::render('Orders', [
+        'orders' => [],
     ]);
-});
-
+})->middleware('auth')->name('orders');
 
 
 require __DIR__.'/auth.php';
-
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});

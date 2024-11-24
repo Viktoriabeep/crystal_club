@@ -1,0 +1,80 @@
+/* Основні стилі компонента Locale Selector */
+.auth-page .locale-selector {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.auth-page .locale-selector button {
+    background: transparent;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.auth-page .locale-dropdown {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.auth-page .locale-dropdown div {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.auth-page .locale-dropdown div:hover {
+    background-color: #f0f0f0;
+}
+
+.auth-page .locale-dropdown div.active {
+    color: blue;
+    background-color: #f0f0f0;
+}
+
+/* Кастомні стилі для профілю */
+.dashboard-layout .locale-selector {
+    display: inline-block;
+    position: relative;
+    top: unset;
+    margin-right: 1em;
+}
+
+.dashboard-layout .locale-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    z-index: 20;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    width: max-content;
+    white-space: nowrap;
+}
+
+.dashboard-layout .locale-dropdown button {
+    display: block;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-layout .locale-dropdown button:hover {
+    background-color: #e0e0e0;
+}

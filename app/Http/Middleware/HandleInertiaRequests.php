@@ -43,6 +43,16 @@ class HandleInertiaRequests extends Middleware
                 'success' => session('success'),
                 'error' => session('error'),
             ],
+            'csrf_token' => csrf_token(),
+            'currentUrl' => $request->fullUrl(),
+            // locale
+            'locale' => app()->getLocale(),
+            'supportedLocales' => config('app.locale_list'),
+            'translations' => fn()
+                => json_decode(
+                file_get_contents(base_path('lang/' . app()->getLocale() . '.json')),
+                true,
+            ),
         ]);
     }
 }

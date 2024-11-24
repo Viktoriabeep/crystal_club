@@ -73,7 +73,7 @@ button {
   border: none;
 }
 
-[id=submitIn] {
+[id=submitIn], [id=cancelButton], [id=submitReset], [id=submitResetPassword] {
   cursor: pointer;
   margin: calc(var(--spacer) * 2) 0 0 2px;
   padding: 0.75rem 1.25rem;
@@ -81,11 +81,11 @@ button {
   background-color: var(--inputColor);
   box-shadow: 4px 4px 0 rgba(30, 144, 255, 0.2);
 }
-[id=submitIn]:active {
+[id=submitIn]:active, [id=cancelButton]:active, [id=submitReset]:active, [id=submitResetPassword]:active {
   transform: translateY(1px);
 }
 
-[id=submitUp] {
+[id=submitUp], [id=submitRegister] {
   cursor: pointer;
   margin: calc(var(--spacer) * 2) 0 0 2px;
   padding: 0.75rem 1.25rem;
@@ -93,11 +93,11 @@ button {
   background-color: var(--inputColor);
   box-shadow: 4px 4px 0 rgba(30, 144, 255, 0.2);
 }
-[id=submitUp]:active {
+[id=submitUp]:active, [id=submitRegister]:active {
   transform: translateY(1px);
 }
 
-#submitUp {
+#submitUp, #submitRegister {
   margin-left: 119px;
 }
 
@@ -126,7 +126,7 @@ input:focus {
   border-color: var(--beamColor);
 }
 
-[id=eyeball] {
+[id=eyeball], [id=eyeball_confirm] {
   --size: 1.25rem;
   display: flex;
   align-items: center;
@@ -140,7 +140,7 @@ input:focus {
   background-color: transparent;
   transform: translateY(-50%);
 }
-[id=eyeball]:active {
+[id=eyeball]:active, [id=eyeball_confirm]:active {
   transform: translateY(calc(-50% + 1px));
 }
 
@@ -189,4 +189,8 @@ input:focus {
 }
 .show-password [id=beam] {
   background: var(--beamColor);
+}
+
+.link {
+  cursor: pointer;
 }

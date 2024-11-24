@@ -1,0 +1,132 @@
+/* Main layout */
+.dashboard-layout {
+    display: flex;
+    height: 100vh;
+    background-color: var(--bgColor);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    height: 100vh; /* Full height */
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fixed sidebar */
+    top: 0;
+    left: 0;
+}
+
+/* Content area */
+.content-area {
+    margin-left: 220px; /* Space for the sidebar */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px; /* Avoid overlapping with topbar */
+}
+
+/* Sidebar menu items */
+.menu-item {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: #e0e0e0;
+}
+
+/* Topbar */
+.topbar {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #f8f9fa;
+    color: #333;
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 220px; /* Adjusted for the sidebar width */
+    right: 0;
+    height: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.user-info {
+    margin-right: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.logout-button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+}
+
+/* Main content area */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Creepster', cursive;
+    font-size: 2rem;
+    color: var(--inputColor);
+}
+
+/* Overwrite locale selector */
+/*.locale-selector {*/
+/*    display: inline-block;*/
+/*    position: relative;*/
+/*    top: unset;*/
+/*    margin-right: 1em;*/
+/*}*/
+
+/*.locale-dropdown {*/
+/*    position: absolute;*/
+/*    top: calc(100% + 0.5rem);*/
+/*    left: 0;*/
+/*    z-index: 20;*/
+/*    background-color: #f8f9fa;*/
+/*    border: 1px solid #ddd;*/
+/*    border-radius: 4px;*/
+/*    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
+/*    padding: 0.5rem 0;*/
+/*    width: max-content;*/
+/*    white-space: nowrap;*/
+/*}*/
+
+/*.locale-dropdown button {*/
+/*    display: block;*/
+/*    padding: 0.5rem 1rem;*/
+/*    width: 100%;*/
+/*    text-align: left;*/
+/*    background: none;*/
+/*    border: none;*/
+/*    color: #333;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s ease;*/
+/*}*/
+
+/*.locale-dropdown button:hover {*/
+/*    background-color: #e0e0e0;*/
+/*}*/

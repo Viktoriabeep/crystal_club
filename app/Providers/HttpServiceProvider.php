@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
-use App\Http\Middleware\HandleInertiaRequests;
 
 class HttpServiceProvider extends ServiceProvider
 {
@@ -24,7 +23,7 @@ class HttpServiceProvider extends ServiceProvider
         $router->middlewareGroup('web', [
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            HandleInertiaRequests::class, // Додаємо тут
+            \App\Http\Middleware\HandleInertiaRequests::class,
         ]);
     }
 }
