@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\CategoriesModel;
+use App\Models\ProductCategories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 class CategoriesModelFactory extends Factory
 {
-    protected $model = CategoriesModel::class;
+    protected $model = ProductCategories::class;
 
     public function definition()
     {

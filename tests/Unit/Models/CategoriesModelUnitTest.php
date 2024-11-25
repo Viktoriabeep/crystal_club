@@ -2,17 +2,17 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\CategoriesModel;
+use App\Models\ProductCategories;
 use PHPUnit\Framework\TestCase;
 
 class CategoriesModelUnitTest extends TestCase
 {
-    protected CategoriesModel $model;
+    protected ProductCategories $model;
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->model = new CategoriesModel();
+        $this->model = new ProductCategories();
     }
 
     public function test_model_has_correct_table_name(): void
@@ -41,6 +41,6 @@ class CategoriesModelUnitTest extends TestCase
         $this->assertContains('Illuminate\Database\Eloquent\Factories\HasFactory', class_uses($this->model));
     }
 
-   
+
 }
 

@@ -14,7 +14,7 @@ RUN apt-get install -y libonig-dev libxml2-dev zip unzip git \
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
 
-RUN docker-php-ext-install ctype curl gd pcntl pdo_pgsql pgsql zip
+RUN docker-php-ext-install ctype curl gd pcntl pdo_pgsql pgsql zip intl
 RUN pecl install redis && docker-php-ext-enable redis
 
 RUN useradd -m $LOCAL_USER

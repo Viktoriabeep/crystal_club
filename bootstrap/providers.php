@@ -5,4 +5,5 @@ return [
     App\Providers\HorizonServiceProvider::class,
     App\Providers\HttpServiceProvider::class,
     Spatie\Permission\PermissionServiceProvider::class,
+    Barryvdh\Debugbar\ServiceProvider::class,
 ];

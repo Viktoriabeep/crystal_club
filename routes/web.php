@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Home');
+    return Inertia::render('Home', ['isAuthenticated' => Auth::check()]);
 });
 
 Route::get('/users', [UserController::class, 'index']);
@@ -47,6 +48,10 @@ Route::get('/orders', function () {
         'orders' => [],
     ]);
 })->middleware('auth')->name('orders');
+
+Route::get('/about', function () {
+    return Inertia::render('About');
+})->name('about');
 
 
 require __DIR__.'/auth.php';

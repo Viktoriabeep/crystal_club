@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\ProductsModel;
-use App\Models\CategoriesModel;
+use App\Models\ProductCategories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -15,7 +15,7 @@ class ProductsModelFactory extends Factory
     {
         $name = fake()->words(3, true);
         return [
-            'category_id' => CategoriesModel::factory(),
+            'category_id' => ProductCategories::factory(),
             'name' => ucfirst($name),
             'slug' => Str::slug($name),
             'description' => fake()->paragraph,

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Models;
 
-use App\Models\CategoriesModel;
+use App\Models\ProductCategories;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase;
 
@@ -10,12 +10,12 @@ class CategoriesModelFeatureTest extends TestCase
 {
     use DatabaseTransactions;
 
-    protected CategoriesModel $model;
+    protected ProductCategories $model;
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->model = new CategoriesModel();
+        $this->model = new ProductCategories();
     }
 
     public function testCreateCategory(): void

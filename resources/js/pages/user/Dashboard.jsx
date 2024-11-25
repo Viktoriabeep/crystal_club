@@ -27,8 +27,11 @@ const Dashboard = ({ user }) => {
 const Sidebar = ({ t }) => (
     <aside className="sidebar">
         <nav>
+            <a href="/" className="logo-link">
+                <img src="/img/logo.png" className="logo" alt="Logo"/>
+            </a>
             <a href="/orders" className="menu-item">
-                {t('My Orders')}
+            {t('My Orders')}
             </a>
         </nav>
     </aside>

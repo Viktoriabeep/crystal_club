@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
 
         $locale = Session::get('locale', config('app.fallback_locale'));
 
-        return redirect()->intended(route('dashboard', ['locale' => $locale], absolute: false));
+        return redirect(route('dashboard', ['locale' => $locale], absolute: false));
     }
 
     /**

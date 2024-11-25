@@ -194,3 +194,8 @@ input:focus {
 .link {
   cursor: pointer;
 }
+
+.auth-page {
+  width: fit-content;
+  margin-left: 30%;
+}
