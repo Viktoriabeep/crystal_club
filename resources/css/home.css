@@ -1016,7 +1016,7 @@ body {
 .store-front #filter-bar {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    padding-bottom: unset;
 }
 
 .store-front .filter {
@@ -1062,4 +1062,10 @@ body {
 
 .store-front .icon i {
     padding: .2em;
+}
+
+.store-front {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }

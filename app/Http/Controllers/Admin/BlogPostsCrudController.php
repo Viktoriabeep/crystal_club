@@ -68,6 +68,13 @@ class BlogPostsCrudController extends CrudController
             ->type('summernote')
             ->options([]);
 
+        CRUD::field('image')
+            ->label('Image')
+            ->type('upload_multiple')
+            ->upload()
+            ->withFiles(true)
+            ->disk('public');
+
         CRUD::field('is_published')
             ->name('is_published')
             ->label('Is Published')

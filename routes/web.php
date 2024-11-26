@@ -20,6 +20,7 @@ Route::middleware(['auth', 'verified_with_locale'])->group(function () {
 
         if (in_array($route, $redirect_routes)) {
             $locale = Session::get('locale', config('app.fallback_locale'));
+
             return redirect("/$locale/$route");
         }
 
@@ -50,8 +51,43 @@ Route::get('/orders', function () {
 })->middleware('auth')->name('orders');
 
 Route::get('/about', function () {
-    return Inertia::render('About');
+    return Inertia::render('info/About', ['isAuthenticated' => Auth::check()]);
 })->name('about');
 
+Route::get('/delivery-information', function () {
+    return Inertia::render('info/DeliveryInformation', ['isAuthenticated' => Auth::check()]);
+})->name('delivery-information');
 
-require __DIR__.'/auth.php';
+Route::get('/privacy-policy', function () {
+    return Inertia::render('info/PrivacyPolicy', ['isAuthenticated' => Auth::check()]);
+})->name('privacy-policy');
+
+Route::get('/terms-conditions', function () {
+    return Inertia::render('info/TermsConditions', ['isAuthenticated' => Auth::check()]);
+})->name('terms-conditions');
+
+Route::get('/contact', function () {
+    return Inertia::render('info/Contact', ['isAuthenticated' => Auth::check()]);
+})->name('contact');
+
+Route::get('/blog', function () {
+    return Inertia::render('blog/Blog', ['isAuthenticated' => Auth::check()]);
+})->name('blog');
+
+Route::get('/blog/{slug}', function ($slug) {
+    return Inertia::render('blog/BlogPost', ['slug' => $slug, 'isAuthenticated' => Auth::check()]);
+})->name('blog-post');
+
+Route::get('/shop', function () {
+    return Inertia::render('shop/Shop', ['isAuthenticated' => Auth::check()]);
+})->name('shop');
+
+Route::get('/product/{id}', function ($id) {
+    return Inertia::render('shop/ProductPage', ['id' => $id, 'isAuthenticated' => Auth::check()]);
+})->name('shop.product');
+
+Route::get('/cart', function () {
+    return Inertia::render('shop/Cart', ['isAuthenticated' => Auth::check()]);
+})->name('cart');
+
+require __DIR__ . '/auth.php';
